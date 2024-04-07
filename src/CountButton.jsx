@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import { MinusIcon, PlusIcon } from '@radix-ui/react-icons';
+import { MINUS } from '../lib/constants';
 
 export function CountButton({ setCount, type, locked }) {
   const handleClickButton = (e) => { 
     setCount(prev => {
-      if (type === 'minus') {
+      if (type === MINUS) {
         return prev > 0 ? prev - 1 : 0;
       } else {
         const newCount = prev + 1;
@@ -18,13 +19,18 @@ export function CountButton({ setCount, type, locked }) {
   }
 
   const buttonIcon = (type) => {
-    return type === 'minus' ?
+    return type === MINUS ?
       <MinusIcon className="count-btn-icon" /> :
       <PlusIcon className="count-btn-icon" />;
   }
   
   return (
-    <button className="count-btn" disabled={locked} onClick={handleClickButton}>
+    <button
+      aria-label={type}
+      className="count-btn"
+      disabled={locked}
+      onClick={handleClickButton}
+    >
       {buttonIcon(type)}
     </button>
   );

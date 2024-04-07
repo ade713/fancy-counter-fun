@@ -4,11 +4,12 @@ import { ButtonContainer } from './ButtonContainer';
 import { ResetButton } from './ResetButton';
 import { Title } from './Title';
 import { CountButton } from './CountButton';
+import { COUNT_MAX, MINUS, PLUS } from '../lib/constants';
 
 
 export function Card() {
   const [count, setCount] = useState(0);
-  const locked = count === 10 ? true : false;
+  const locked = count === COUNT_MAX ? true : false;
 
   useEffect(() => {
     function handleKeyPressSpacebar(e) {
@@ -33,8 +34,8 @@ export function Card() {
       <Count count={count} />
       <ResetButton setCount={setCount} />
       <ButtonContainer>
-        <CountButton type="minus" setCount={setCount} locked={locked} />
-        <CountButton type="plus" setCount={setCount} locked={locked} />
+        <CountButton type={MINUS} setCount={setCount} locked={locked} />
+        <CountButton type={PLUS} setCount={setCount} locked={locked} />
       </ButtonContainer>
     </div>
   );
