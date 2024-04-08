@@ -8,8 +8,11 @@ export function ResetButton({ setCount }) {
   };
   
   return (
-    <button className="reset-btn">
-      <ResetIcon className="reset-btn-icon" onClick={handleClickReset} />
+    <button
+      aria-label='reset-button'
+      className="reset-btn"
+      onClick={handleClickReset}>
+        <ResetIcon className="reset-btn-icon" />
     </button>
   );
 }
